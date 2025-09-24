@@ -1,6 +1,6 @@
 <style>
     body {
-        background-color: #470000;
+        background-color: #00401C;
         font-family: Arial, sans-serif;
     }
 
@@ -15,7 +15,7 @@
 
     .login-container h2 {
         text-align: center;
-        color: #470000;
+        color: #00401C;
         margin-bottom: 20px;
     }
 
@@ -23,29 +23,29 @@
         display: block;
         margin-bottom: 6px;
         font-weight: bold;
-        color: #470000;
+        color: #00401C;
     }
 
     .form-input {
         width: 100%;
         padding: 10px;
-        border: 1px solid #470000;
+        border: 1px solid #00401C;
         border-radius: 8px;
         margin-bottom: 12px;
         font-size: 14px;
-        background-color: #470000;
+        background-color: #00401C;
         color: #FFFFFF;
         transition: all 0.3s;
     }
 
     .form-input:focus {
-        border-color: #470000;
+        border-color: #00401C;
         outline: none;
         box-shadow: 0 0 6px rgba(94, 18, 0, 0.6);
     }
 
     .form-error {
-        color: #470000;
+        color: #00401C;
         font-size: 13px;
         margin-top: -8px;
         margin-bottom: 10px;
@@ -59,7 +59,7 @@
 
     .form-footer a {
         font-size: 13px;
-        color: #470000;
+        color: #00401C;
         text-decoration: none;
         font-weight: bold;
     }
@@ -69,7 +69,7 @@
     }
 
     .btn-submit {
-        background-color: #470000;
+        background-color: #00401C;
         color: #FFFFFF;
         padding: 10px 20px;
         border: none;

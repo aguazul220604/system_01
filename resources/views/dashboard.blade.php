@@ -36,24 +36,45 @@
                 padding-bottom: 8px;
             }
 
-            .user-list {
-                list-style: none;
-                padding: 0;
-                margin: 0;
+            /* 🎨 Estilos para la tabla */
+            .user-table {
+                width: 100%;
+                border-collapse: collapse;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
             }
 
-            .user-list li {
+            .user-table thead {
                 background-color: #00401C;
                 color: #FFFFFF;
-                padding: 12px 15px;
-                margin-bottom: 10px;
-                border-radius: 8px;
-                transition: transform 0.2s, background 0.3s;
+                text-align: left;
             }
 
-            .user-list li:hover {
-                background-color: #003318;
-                transform: translateX(5px);
+            .user-table th,
+            .user-table td {
+                padding: 12px 15px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .user-table tbody tr:nth-child(even) {
+                background-color: #f4f4f4;
+            }
+
+            .user-table tbody tr:hover {
+                background-color: #e6f0ea;
+                transform: scale(1.01);
+                transition: all 0.2s ease-in-out;
+            }
+
+            .user-table th {
+                font-size: 15px;
+                font-weight: bold;
+            }
+
+            .user-table td {
+                font-size: 14px;
+                color: #333;
             }
         </style>
 
@@ -66,11 +87,28 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="dashboard-card">
                 <h3>{{ __('Lista de Usuarios') }}</h3>
-                <ul class="user-list">
-                    @foreach ($users as $user)
-                        <li>{{ $user->name }}</li>
-                    @endforeach
-                </ul>
+                <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Correo electrónico</th>
+                            <th>Domicilio</th>
+                            <th>Teléfono</th>
+                            <th>Fecha de nacimiento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($users as $user)
+                            <tr>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->domicilio }}</td>
+                                <td>{{ $user->telefono }}</td>
+                                <td>{{ $user->fecha_nacimiento }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
