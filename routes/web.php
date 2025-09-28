@@ -9,8 +9,16 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [GetUsersController::class, 'GetUsers'])
-    ->middleware(['auth', 'verified'])
+    ->middleware('auth')
     ->name('dashboard');
+
+Route::get('/registro', [GetUsersController::class, 'registro'])
+    ->middleware('auth')
+    ->name('registro');
+
+Route::post('/dashboard/register', [GetUsersController::class, 'registro_store'])
+    ->middleware('auth')
+    ->name('dashboard.register');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

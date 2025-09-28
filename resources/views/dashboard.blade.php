@@ -1,4 +1,33 @@
+@if (!Auth::check())
+    <script>
+        window.location.href = "{{ route('login') }}";
+    </script>
+@endif
+
 <x-app-layout>
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (session('message') === 'ok')
+        <script>
+            Swal.fire({
+                text: "Usuario registrado exitosamente",
+                icon: "success",
+                confirmButtonColor: "#00532C",
+                showConfirmButton: true
+            });
+        </script>
+    @endif
+    @if ($errors->any())
+        <script>
+            Swal.fire({
+                text: "{{ $errors->first() }}",
+                icon: "warning",
+                confirmButtonColor: "#00532C",
+                showConfirmButton: true
+            });
+        </script>
+    @endif
     <x-slot name="header">
         <style>
             body {
@@ -36,7 +65,6 @@
                 padding-bottom: 8px;
             }
 
-            /* 🎨 Estilos para la tabla */
             .user-table {
                 width: 100%;
                 border-collapse: collapse;
@@ -86,7 +114,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto px-4">
             <div class="dashboard-card">
-                <h3>{{ __('Lista de Usuarios') }}</h3>
+                <h3>{{ __('Lista de usuarios') }}</h3>
                 <table class="user-table">
                     <thead>
                         <tr>
@@ -94,7 +122,8 @@
                             <th>Correo electrónico</th>
                             <th>Domicilio</th>
                             <th>Teléfono</th>
-                            <th>Fecha de nacimiento</th>
+                            <th>Edad</th>
+                            <th>Estatus</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -104,7 +133,14 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->domicilio }}</td>
                                 <td>{{ $user->telefono }}</td>
-                                <td>{{ $user->fecha_nacimiento }}</td>
+                                <td>{{ $user->edad }}</td>
+                                <td>
+                                    @if ($user->estatus == 0)
+                                        <p>No titulado</p>
+                                    @else
+                                        <p>Titulado</p>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
